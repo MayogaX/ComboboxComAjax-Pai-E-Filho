@@ -12,15 +12,13 @@
           chamaFilhos = function() {
             //var parametros = $(form).find('INPUT,SELECT').serialize();
             var parametros = $("#selectPai").val();
-            //alert(parametros);
             var option = "<option value='null'>-- SELECIONE --</option>";
-            $.post('http://localhost:8080/ComboboxComAjax-Pai-E-Filho/neto/chamaFilho' function(data){
-              alert("post");
-              //$.each(eval("("+data +")"),function(tmp,obj) {
-                //option += "<option value ='" + obj.id + "'>" + obj.name + "</option>";
-              //});
-                //$("#filho").html(option);
+            $.post('chamaFilho', {pai:parametros}, function(data){
+              $.each(eval("("+data +")"),function(tmp,obj) {
+                option += "<option value ='" + obj.id + "'>" + obj.name + "</option>";
               });
+              });
+              $("#filho").html(option);
           }
           </script>
     </head>

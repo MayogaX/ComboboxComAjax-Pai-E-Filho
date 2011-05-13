@@ -8,18 +8,18 @@ class NetoController {
     def index = {
         redirect(action: "list", params: params)
     }
-
+    
     def chamaFilho = {
-
-        /*def pai = Pai.get(params.pai.id)
-        def pais = Filho.findAllByPai()(pai,[sort:'nome']);
+        def pai = Pai.id = params.pai
+        pai = Pai.findById(pai)
+        //def pai = Pai,i.get(params.pai)
+        def pais = Filho.findAllByPai(pai)
         pais = pais.collect {
         [id:it.id, name:it.nome]
         }
         render pais as JSON
-*/
     }
-    
+
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [netoInstanceList: Neto.list(params), netoInstanceTotal: Neto.count()]
