@@ -10,7 +10,6 @@ class NetoController {
     }
     
     def chamaFilho = {
-        //def idPai = params.list('pai')
         def pai = Pai.get(params.pai)
         def pais = Filho.findAllByPai(pai)
         pais = pais.collect {

@@ -14,10 +14,12 @@
             var parametros = $("#selectPai").val();
             var option = "<option value='null'>-- SELECIONE --</option>";
             $.post('chamaFilho', {pai:parametros}, function(data){
-              $.each(eval("("+data +")"),function(tmp,obj) {
+              $.each(eval(data),function(tmp,obj) {
                 option += "<option value ='" + obj.id + "'>" + obj.name + "</option>";
+                //option += "<option value ='" + tmp + "'>" + obj + "</option>";
               });
               });
+              alert(option);
               $("#filho").html(option);
           }
           </script>
